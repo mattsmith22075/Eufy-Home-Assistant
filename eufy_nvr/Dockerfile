@@ -65,7 +65,7 @@ RUN if [ ! -e /usr/bin/python ]; then ln -s /usr/bin/python3 /usr/bin/python; fi
 # ---------------------------------------------------------------------------
 ARG REPO_URL="https://github.com/HallyAus/Eufy-Home-Assistant"
 ARG REPO_REF="main"
-RUN git clone --depth 1 --branch "${REPO_REF}" "${REPO_URL}" /tmp/repo \
+RUN echo "cache-bust: $(date +%s)" && git clone --depth 1 --branch "${REPO_REF}" "${REPO_URL}" /tmp/repo \
     && mkdir -p /opt/eufy \
     && cp -r /tmp/repo/bridge /opt/eufy/bridge \
     && rm -rf /tmp/repo
