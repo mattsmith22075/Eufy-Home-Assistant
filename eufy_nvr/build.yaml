@@ -8,8 +8,9 @@ build_from:
   amd64: ghcr.io/home-assistant/amd64-base-debian:bookworm
 args:
   GO2RTC_VERSION: "v1.9.9"
+  REPO_URL: "https://github.com/mattsmith22075/Eufy-Home-Assistant"
 labels:
   org.opencontainers.image.title: "Eufy NVR Local"
   org.opencontainers.image.description: "Local eufy S4/T8N00 WebRTC -> RTSP bridge for Home Assistant"
-  org.opencontainers.image.source: https://github.com/HallyAus/Eufy-Home-Assistant
+  org.opencontainers.image.source: https://github.com/mattsmith22075/Eufy-Home-Assistant
   org.opencontainers.image.licenses: MIT
