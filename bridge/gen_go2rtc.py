@@ -26,7 +26,7 @@ if offline:
 
 lines = [f'# Auto-generated from cameras.json (eufy NVR {cams.get("nvr_sn","")}). Online cameras only; on-demand streams.', "streams:"]
 for name, c in online:
-    lines.append(f"  {name}: \"exec:python eufy_stream.py {c['channel']} --rtsp {{output}}#starttimeout#60\")
+    lines.append(f"  {name}: \"exec:python eufy_stream.py {c['channel']} --rtsp {{output}}#starttimeout#60\"")
 lines += ["", "rtsp:", '  listen: ":8554"', "", "api:", '  listen: ":1984"', "", "log:", "  level: info", ""]
 open(os.path.join(ROOT, "go2rtc.yaml"), "w").write("\n".join(lines))
 print("wrote", os.path.join(ROOT, "go2rtc.yaml"), f"({len(online)} online cameras)")
