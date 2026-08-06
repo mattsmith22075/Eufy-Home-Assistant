@@ -36,7 +36,7 @@ function unzip(zip, outdir) {
 (async () => {
   // 1) eufy workers (public static assets). Versions match the web client at time of writing.
   const CDN = "https://security.eufy.com/plugin/";
-  const workers = ["libsctp_0_0_1.js", "libsctp_0_0_1.wasm", "worker_sctp_send_0_0_1.js", "worker_sctp_recv_0_0_1.js"];
+  const workers = ["libsctp_0_0_2.js", "libsctp_0_0_2.wasm", "worker_sctp_send_0_0_2.js", "worker_sctp_recv_0_0_2.js"];
   for (const w of workers) {
     process.stdout.write(`eufy worker ${w} ... `);
     try { console.log(await dl(CDN + w, path.join(WORKER, w)), "bytes"); }
