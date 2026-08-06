@@ -274,7 +274,7 @@ async def main():
 
     oracle = Oracle(); await oracle.start()
 
-    sub = {"region": AUTH.get("webCountry", "US"), "type": "NVR", "sn": STATION_SN,
+    sub = {"region": REGION.upper(), "type": "NVR", "sn": STATION_SN,
            "token": AUTH["authToken"], "gtoken": AUTH["gtoken"], "sign": sign_token,
            "appName": AUTH.get("appName", "eufy_mega"), "modelType": "WEB"}
     subproto = base64.urlsafe_b64encode(json.dumps(sub, separators=(",", ":")).encode()).decode().rstrip("=")
