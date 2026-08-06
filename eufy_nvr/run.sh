@@ -139,7 +139,7 @@ RELOGIN_PID=""
 start_warmers() {
     local s streams i=0
     mapfile -t streams < <(grep -E '^[[:space:]]+eufy_[a-z0-9_]+:' "${BRIDGE_DIR}/go2rtc.yaml" \
-        | grep -v 'offline at discovery' | sed 's/:.*$//' | tr -d '[:space:]')
+        | grep -v 'offline at discovery' | sed 's/:.*$//' | sed 's/[[:space:]]//g')
     if [ "${#streams[@]}" -eq 0 ]; then
         bashio::log.warning "keep-warm: no online streams in go2rtc.yaml; nothing to warm."
         return 0
