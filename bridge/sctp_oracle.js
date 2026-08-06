@@ -15,8 +15,8 @@ const fs = require("fs");
 const path = require("path");
 
 const WDIR = path.join(__dirname, "worker");   // eufy libsctp files, fetched by fetch_deps.js
-const GLUE = path.join(WDIR, "libsctp_0_0_1.js");
-const WASM = path.join(WDIR, "libsctp_0_0_1.wasm");
+const GLUE = path.join(WDIR, "libsctp_0_0_2.js");
+const WASM = path.join(WDIR, "libsctp_0_0_2.wasm");
 
 // link_type / channel_type, mirrored from worker_sctp_send/recv
 const LINK = { Unknow: 0, Cmd: 1, File: 2, Notify: 3, PlayBack: 4, Live: 5, SendLive: 6, Inner: 99 };
