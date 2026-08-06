@@ -73,8 +73,15 @@ NODE = _bin("node")
 ORACLE = os.path.join(ROOT, "sctp_oracle.js")
 FFMPEG = _bin("ffmpeg")
 
-WS_URL = "wss://security-smart.eufylife.com/v1/rtc/ws/join?reqtype=nvr"
-SIGN_URL = f"https://security-smart.eufylife.com/v1/smart/nvr/ws/sign?station_sn={STATION_SN}"
+_SMART_HOST = {
+    "us": "https://security-smart.eufylife.com",
+    "eu": "https://security-smart-eu.eufylife.com",
+    "ie": "https://security-smart-ie.eufylife.com",
+}
+REGION = (os.environ.get("EUFY_REGION") or "US").strip().lower()
+SMART_HOST = _SMART_HOST.get(REGION, _SMART_HOST["us"])
+WS_URL = f"{SMART_HOST.replace('https://', 'wss://')}/v1/rtc/ws/join?reqtype=nvr"
+SIGN_URL = f"{SMART_HOST}/v1/smart/nvr/ws/sign?station_sn={STATION_SN}"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"
 HEADERS = {
     "x-auth-token": AUTH["authToken"], "gtoken": AUTH["gtoken"],
